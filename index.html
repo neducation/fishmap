@@ -13,6 +13,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <!-- Leaflet CSS for real maps -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
   </head>
   <body>
     <div id="app">
@@ -86,83 +91,7 @@
             <!-- Map Container -->
             <div class="map-container">
               <div id="map" class="map">
-                <!-- Custom Map Implementation -->
-                <div class="map-placeholder">
-                  <div class="map-pins">
-                    <!-- Store Pins -->
-                    <div
-                      class="map-pin"
-                      data-store="terrys"
-                      style="top: 30%; left: 40%"
-                    >
-                      <div class="pin-icon">
-                        <i class="fas fa-fish"></i>
-                      </div>
-                      <div class="pin-popup">
-                        <h4>Terry's Aquatics</h4>
-                        <p>Updated 2h ago</p>
-                        <img
-                          src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=100&h=60&fit=crop"
-                          alt="Tank"
-                        />
-                      </div>
-                    </div>
-
-                    <div
-                      class="map-pin"
-                      data-store="aquaworld"
-                      style="top: 60%; left: 30%"
-                    >
-                      <div class="pin-icon">
-                        <i class="fas fa-fish"></i>
-                      </div>
-                      <div class="pin-popup">
-                        <h4>AquaWorld</h4>
-                        <p>Updated 4h ago</p>
-                        <img
-                          src="https://images.unsplash.com/photo-1520637836862-4d197d17c35a?w=100&h=60&fit=crop"
-                          alt="Tank"
-                        />
-                      </div>
-                    </div>
-
-                    <div
-                      class="map-pin"
-                      data-store="fishparadise"
-                      style="top: 45%; left: 65%"
-                    >
-                      <div class="pin-icon">
-                        <i class="fas fa-fish"></i>
-                      </div>
-                      <div class="pin-popup">
-                        <h4>Fish Paradise</h4>
-                        <p>Updated 1h ago</p>
-                        <img
-                          src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=100&h=60&fit=crop"
-                          alt="Tank"
-                        />
-                      </div>
-                    </div>
-
-                    <div
-                      class="map-pin"
-                      data-store="reefstation"
-                      style="top: 25%; left: 70%"
-                    >
-                      <div class="pin-icon">
-                        <i class="fas fa-fish"></i>
-                      </div>
-                      <div class="pin-popup">
-                        <h4>Reef Station</h4>
-                        <p>Updated 30min ago</p>
-                        <img
-                          src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=100&h=60&fit=crop"
-                          alt="Tank"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <!-- Real Leaflet map will be initialized here -->
               </div>
             </div>
 
@@ -183,8 +112,8 @@
                   </div>
                   <div class="store-image">
                     <img
-                      src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=80&h=80&fit=crop"
-                      alt="Store"
+                      src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=80&h=80&fit=crop&q=80"
+                      alt="Terry's Aquatics"
                     />
                   </div>
                 </div>
@@ -201,8 +130,8 @@
                   </div>
                   <div class="store-image">
                     <img
-                      src="https://images.unsplash.com/photo-1520637836862-4d197d17c35a?w=80&h=80&fit=crop"
-                      alt="Store"
+                      src="https://images.unsplash.com/photo-1563281746-b9d6c6c752e9?w=80&h=80&fit=crop&q=80"
+                      alt="AquaWorld"
                     />
                   </div>
                 </div>
@@ -220,8 +149,8 @@
                   </div>
                   <div class="store-image">
                     <img
-                      src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=80&h=80&fit=crop"
-                      alt="Store"
+                      src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=80&h=80&fit=crop&q=80"
+                      alt="Fish Paradise"
                     />
                   </div>
                 </div>
@@ -239,8 +168,8 @@
                   </div>
                   <div class="store-image">
                     <img
-                      src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=80&h=80&fit=crop"
-                      alt="Store"
+                      src="https://images.unsplash.com/photo-1545450660-ca0c014745ca?w=80&h=80&fit=crop&q=80"
+                      alt="Reef Station"
                     />
                   </div>
                 </div>
@@ -302,6 +231,8 @@
       </main>
     </div>
 
+    <!-- Leaflet JavaScript for real maps -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

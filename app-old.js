@@ -1,4 +1,4 @@
-// FishMap Application JavaScript with Real Map Integration
+// FishMap Application JavaScript
 class FishMapApp {
   constructor() {
     this.currentPage = "map";
@@ -9,8 +9,6 @@ class FishMapApp {
       species: [],
       distance: "all",
     };
-    this.map = null;
-    this.mapMarkers = [];
 
     this.init();
   }
@@ -19,7 +17,6 @@ class FishMapApp {
     this.setupEventListeners();
     this.renderTankGrid();
     this.setupSearch();
-    this.initializeMap();
   }
 
   initializeStores() {
@@ -33,8 +30,7 @@ class FishMapApp {
         distance: "2.3 miles",
         lastUpdated: "2 hours ago",
         tags: ["Freshwater", "Saltwater", "Plants"],
-        image:
-          "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80",
         coordinates: [41.5322, -87.2553], // Hobart, IN area
       },
       aquaworld: {
@@ -46,8 +42,7 @@ class FishMapApp {
         distance: "3.7 miles",
         lastUpdated: "4 hours ago",
         tags: ["Tropical Fish", "Shrimp"],
-        image:
-          "https://images.unsplash.com/photo-1563281746-b9d6c6c752e9?w=400&h=300&fit=crop&q=80",
+        image: "https://images.unsplash.com/photo-1563281746-b9d6c6c752e9?w=400&h=300&fit=crop&q=80",
         coordinates: [41.5936, -87.3464], // Gary, IN area
       },
       fishparadise: {
@@ -59,9 +54,28 @@ class FishMapApp {
         distance: "4.1 miles",
         lastUpdated: "1 hour ago",
         tags: ["Cichlids", "Bettas", "Supplies"],
+        image: "https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=400&h=300&fit=crop&q=80",
+        coordinates: [41.5831, -87.5000], // Hammond, IN area
+      },
+      reefstation: {
+        id: "reefstation",
+        name: "Reef Station",
+        address: "321 Marine Way, East Chicago, IN 46312",
+        phone: "(219) 555-0321",
+        hours: "Open today: 10:00 AM - 6:00 PM",
+        distance: "5.2 miles",
+        lastUpdated: "30 minutes ago",
+        tags: ["Marine", "Corals", "Invertebrates"],
+        image: "https://images.unsplash.com/photo-1545450660-ca0c014745ca?w=400&h=300&fit=crop&q=80",
+        coordinates: [41.6389, -87.4548], // East Chicago, IN area
+      },
+        phone: "(219) 555-0789",
+        hours: "Open today: 11:00 AM - 7:00 PM",
+        distance: "4.1 miles",
+        lastUpdated: "1 hour ago",
+        tags: ["Cichlids", "Bettas", "Supplies"],
         image:
-          "https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=400&h=300&fit=crop&q=80",
-        coordinates: [41.5831, -87.5], // Hammond, IN area
+          "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop",
       },
       reefstation: {
         id: "reefstation",
@@ -73,8 +87,7 @@ class FishMapApp {
         lastUpdated: "30 minutes ago",
         tags: ["Marine", "Corals", "Invertebrates"],
         image:
-          "https://images.unsplash.com/photo-1545450660-ca0c014745ca?w=400&h=300&fit=crop&q=80",
-        coordinates: [41.6389, -87.4548], // East Chicago, IN area
+          "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=300&fit=crop",
       },
     };
   }
@@ -88,7 +101,7 @@ class FishMapApp {
           species: ["Red Cherry Shrimp", "Neon Tetras", "Java Moss"],
           category: "shrimp",
           image:
-            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=400&h=300&fit=crop",
           timestamp: "Updated today, 2:15 PM",
           description:
             "Beautiful community tank with healthy shrimp colony and schooling tetras. Well-established with live plants.",
@@ -99,7 +112,7 @@ class FishMapApp {
           species: ["Fancy Guppies", "Endlers Guppies"],
           category: "guppies",
           image:
-            "https://images.unsplash.com/photo-1563281746-b9d6c6c752e9?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1520637836862-4d197d17c35a?w=400&h=300&fit=crop",
           timestamp: "Updated today, 1:45 PM",
           description:
             "Premium guppy strains including Moscow blues, red deltas, and rare endlers. Breeding quality fish.",
@@ -110,7 +123,7 @@ class FishMapApp {
           species: ["Silver Angels", "Koi Angels", "Black Angels"],
           category: "cichlids",
           image:
-            "https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop",
           timestamp: "Updated today, 12:30 PM",
           description:
             "Stunning angelfish in various color patterns. Hand-picked specimens with excellent finnage.",
@@ -121,7 +134,7 @@ class FishMapApp {
           species: ["Anubias", "Amazon Sword", "Cryptocoryne"],
           category: "plants",
           image:
-            "https://images.unsplash.com/photo-1545450660-ca0c014745ca?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=300&fit=crop",
           timestamp: "Updated today, 11:20 AM",
           description:
             "Fully aquascaped planted tank with CO2 injection. Perfect for plant enthusiasts.",
@@ -132,7 +145,7 @@ class FishMapApp {
           species: ["Halfmoon Bettas", "Crowntail Bettas", "Plakat Bettas"],
           category: "bettas",
           image:
-            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
           timestamp: "Updated today, 10:45 AM",
           description:
             "Premium betta fish in various tail types and colors. Each fish individually housed.",
@@ -143,7 +156,7 @@ class FishMapApp {
           species: ["Ghost Shrimp", "Amano Shrimp"],
           category: "shrimp",
           image:
-            "https://images.unsplash.com/photo-1563281746-b9d6c6c752e9?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1520637836862-4d197d17c35a?w=400&h=300&fit=crop",
           timestamp: "Updated today, 9:30 AM",
           description:
             "Healthy ghost shrimp and amano shrimp for algae control and tank cleaning.",
@@ -156,7 +169,7 @@ class FishMapApp {
           species: ["Crystal Red Shrimp", "Crystal Black Shrimp"],
           category: "shrimp",
           image:
-            "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=300&fit=crop",
           timestamp: "Updated today, 3:20 PM",
           description:
             "High-grade crystal shrimp with excellent color and patterns. Bred in soft water conditions.",
@@ -167,7 +180,7 @@ class FishMapApp {
           species: ["Cardinal Tetras", "Rummy Nose Tetras", "Ember Tetras"],
           category: "tetras",
           image:
-            "https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=400&h=300&fit=crop",
           timestamp: "Updated today, 2:50 PM",
           description:
             "Beautiful schooling tetras in large groups. Perfect for community aquariums.",
@@ -180,7 +193,7 @@ class FishMapApp {
           species: ["Electric Yellow", "Red Zebra", "Blue Johanni"],
           category: "cichlids",
           image:
-            "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop",
           timestamp: "Updated today, 4:10 PM",
           description:
             "Vibrant African cichlids from Lake Malawi. Excellent colors and healthy specimens.",
@@ -191,7 +204,7 @@ class FishMapApp {
           species: ["Galaxy Koi Bettas", "Dumbo Ear Bettas"],
           category: "bettas",
           image:
-            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
           timestamp: "Updated today, 3:45 PM",
           description:
             "Rare and exotic betta varieties including galaxy koi and dumbo ear patterns.",
@@ -204,7 +217,7 @@ class FishMapApp {
           species: ["Zoanthids", "Mushroom Corals", "GSP"],
           category: "corals",
           image:
-            "https://images.unsplash.com/photo-1545450660-ca0c014745ca?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=300&fit=crop",
           timestamp: "Updated today, 1:20 PM",
           description:
             "Thriving coral frags under optimal lighting. Perfect for reef tank enthusiasts.",
@@ -215,81 +228,13 @@ class FishMapApp {
           species: ["Clownfish", "Yellow Tang", "Royal Gramma"],
           category: "marine",
           image:
-            "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop",
           timestamp: "Updated today, 12:45 PM",
           description:
             "Healthy marine fish acclimated and eating well. Quarantined and ready for home aquariums.",
         },
       ],
     };
-  }
-
-  // Initialize Real Map with Leaflet
-  initializeMap() {
-    // Center the map on Hobart, Indiana area
-    const centerCoords = [41.5322, -87.2553];
-
-    // Initialize the map
-    this.map = L.map("map").setView(centerCoords, 12);
-
-    // Add OpenStreetMap tiles
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "© OpenStreetMap contributors",
-      maxZoom: 19,
-    }).addTo(this.map);
-
-    // Add store markers
-    this.addStoreMarkers();
-  }
-
-  addStoreMarkers() {
-    Object.values(this.stores).forEach((store) => {
-      // Create custom fish icon
-      const fishIcon = L.divIcon({
-        className: "custom-fish-marker",
-        html: `<div class="fish-marker-icon">
-                    <i class="fas fa-fish"></i>
-                </div>`,
-        iconSize: [40, 40],
-        iconAnchor: [20, 40],
-        popupAnchor: [0, -40],
-      });
-
-      // Create marker
-      const marker = L.marker(store.coordinates, { icon: fishIcon }).addTo(
-        this.map
-      );
-
-      // Create popup content
-      const popupContent = `
-                <div class="map-popup">
-                    <h4>${store.name}</h4>
-                    <p class="popup-updated">Updated ${store.lastUpdated}</p>
-                    <img src="${store.image}" alt="${
-        store.name
-      }" class="popup-image" />
-                    <div class="popup-tags">
-                        ${store.tags
-                          .map((tag) => `<span class="popup-tag">${tag}</span>`)
-                          .join("")}
-                    </div>
-                    <button class="popup-btn" onclick="app.openStoreDetail('${
-                      store.id
-                    }')">
-                        View Store
-                    </button>
-                </div>
-            `;
-
-      marker.bindPopup(popupContent, {
-        maxWidth: 250,
-        className: "custom-popup",
-      });
-
-      // Store marker reference
-      marker.storeId = store.id;
-      this.mapMarkers.push(marker);
-    });
   }
 
   setupEventListeners() {
@@ -302,8 +247,8 @@ class FishMapApp {
       });
     });
 
-    // Store cards
-    document.querySelectorAll(".store-card").forEach((element) => {
+    // Store cards and map pins
+    document.querySelectorAll(".store-card, .map-pin").forEach((element) => {
       element.addEventListener("click", (e) => {
         const storeId = e.currentTarget.dataset.store;
         this.openStoreDetail(storeId);
@@ -378,12 +323,6 @@ class FishMapApp {
 
     if (page === "map") {
       document.getElementById("mapPage").classList.add("active");
-      // Resize map when showing
-      setTimeout(() => {
-        if (this.map) {
-          this.map.invalidateSize();
-        }
-      }, 100);
     } else if (page === "stores") {
       document.getElementById("storeDetailPage").classList.add("active");
     }
@@ -492,9 +431,10 @@ class FishMapApp {
       }
     });
 
-    // Filter map markers
-    this.mapMarkers.forEach((marker) => {
-      const store = this.stores[marker.storeId];
+    // Search in map pins
+    document.querySelectorAll(".map-pin").forEach((pin) => {
+      const storeId = pin.dataset.store;
+      const store = this.stores[storeId];
       const storeName = store.name.toLowerCase();
       const storeTags = store.tags.map((tag) => tag.toLowerCase());
 
@@ -502,9 +442,9 @@ class FishMapApp {
         storeName.includes(searchLower) ||
         storeTags.some((tag) => tag.includes(searchLower))
       ) {
-        marker.addTo(this.map);
+        pin.style.display = "block";
       } else {
-        this.map.removeLayer(marker);
+        pin.style.display = "none";
       }
     });
 
@@ -554,14 +494,11 @@ class FishMapApp {
     });
 
     // Show all elements
-    document.querySelectorAll(".store-card, .tank-card").forEach((el) => {
-      el.style.display = "";
-    });
-
-    // Show all map markers
-    this.mapMarkers.forEach((marker) => {
-      marker.addTo(this.map);
-    });
+    document
+      .querySelectorAll(".store-card, .map-pin, .tank-card")
+      .forEach((el) => {
+        el.style.display = "";
+      });
   }
 
   updateFilters() {
@@ -604,16 +541,12 @@ class FishMapApp {
       card.style.display = shouldShow ? "flex" : "none";
     });
 
-    // Also filter map markers
-    this.mapMarkers.forEach((marker) => {
+    // Also filter map pins
+    document.querySelectorAll(".map-pin").forEach((pin) => {
       const storeCard = document.querySelector(
-        `.store-card[data-store="${marker.storeId}"]`
+        `.store-card[data-store="${pin.dataset.store}"]`
       );
-      if (storeCard.style.display === "none") {
-        this.map.removeLayer(marker);
-      } else {
-        marker.addTo(this.map);
-      }
+      pin.style.display = storeCard.style.display === "none" ? "none" : "block";
     });
   }
 
@@ -651,7 +584,7 @@ class FishMapApp {
 // Enhanced animations and interactions
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize the app
-  window.app = new FishMapApp();
+  const app = new FishMapApp();
 
   // Add some nice loading animations
   const observerOptions = {
@@ -702,6 +635,22 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
+  // Add smooth scroll behavior
+  document.documentElement.style.scrollBehavior = "smooth";
+
+  // Enhanced map pin interactions
+  document.querySelectorAll(".map-pin").forEach((pin) => {
+    pin.addEventListener("mouseenter", function () {
+      this.style.transform = "scale(1.1)";
+      this.style.zIndex = "1000";
+    });
+
+    pin.addEventListener("mouseleave", function () {
+      this.style.transform = "scale(1)";
+      this.style.zIndex = "10";
+    });
+  });
+
   // Add loading states for images
   document.querySelectorAll("img").forEach((img) => {
     img.addEventListener("load", function () {
@@ -718,115 +667,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   console.log(
-    "🐠 FishMap App Initialized with Real Map! Welcome to the future of aquarium shopping."
+    "🐠 FishMap App Initialized! Welcome to the future of aquarium shopping."
   );
 });
 
-// Add CSS for map components
-const mapStyles = document.createElement("style");
-mapStyles.textContent = `
-    .custom-fish-marker {
-        background: none;
-        border: none;
-    }
-    
-    .fish-marker-icon {
-        background: linear-gradient(135deg, #4299e1, #3182ce);
-        color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50% 50% 50% 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 12px rgba(66, 153, 225, 0.4);
-        transform: rotate(-45deg);
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .fish-marker-icon:hover {
-        transform: rotate(-45deg) scale(1.1);
-        box-shadow: 0 6px 20px rgba(66, 153, 225, 0.6);
-    }
-    
-    .fish-marker-icon i {
-        transform: rotate(45deg);
-        font-size: 1.2rem;
-    }
-    
-    .custom-popup .leaflet-popup-content-wrapper {
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        border: 1px solid rgba(226, 232, 240, 0.8);
-    }
-    
-    .custom-popup .leaflet-popup-tip {
-        background: white;
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        border-top: none;
-        border-right: none;
-    }
-    
-    .map-popup {
-        padding: 0.5rem;
-        text-align: center;
-    }
-    
-    .map-popup h4 {
-        margin-bottom: 0.5rem;
-        color: #2d3748;
-        font-weight: 600;
-    }
-    
-    .popup-updated {
-        color: #718096;
-        font-size: 0.9rem;
-        margin-bottom: 0.75rem;
-    }
-    
-    .popup-image {
-        width: 100%;
-        height: 80px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 0.75rem;
-    }
-    
-    .popup-tags {
-        display: flex;
-        gap: 0.25rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-bottom: 0.75rem;
-    }
-    
-    .popup-tag {
-        background: linear-gradient(135deg, #4299e1, #3182ce);
-        color: white;
-        padding: 0.15rem 0.5rem;
-        border-radius: 12px;
-        font-size: 0.7rem;
-        font-weight: 500;
-    }
-    
-    .popup-btn {
-        background: linear-gradient(135deg, #4299e1, #3182ce);
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        cursor: pointer;
-        font-weight: 500;
-        transition: all 0.2s;
-    }
-    
-    .popup-btn:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 2px 8px rgba(66, 153, 225, 0.4);
-    }
-    
+// Add CSS for ripple effect
+const style = document.createElement("style");
+style.textContent = `
     .ripple {
         position: absolute;
         border-radius: 50%;
@@ -851,4 +698,4 @@ mapStyles.textContent = `
         font-weight: 600;
     }
 `;
-document.head.appendChild(mapStyles);
+document.head.appendChild(style);

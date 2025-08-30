@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FishMap - Live Aquarium Stock Finder</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <div class="logo">
+            <i class="fas fa-fish"></i>
+            <span>FishMap</span>
+          </div>
+          <nav class="nav">
+            <a href="#" class="nav-link active" data-page="map">Map</a>
+            <a href="#" class="nav-link" data-page="stores">Stores</a>
+            <a href="#" class="nav-link" data-page="about">About</a>
+          </nav>
+          <div class="header-actions">
+            <button class="btn btn-outline">For Store Owners</button>
+            <button class="btn btn-primary">Add Store</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for guppies, angelfish, ghost shrimp..."
+          />
+          <button class="filter-btn" id="filterBtn">
+            <i class="fas fa-filter"></i>
+          </button>
+        </div>
+
+        <!-- Filter Panel -->
+        <div class="filter-panel" id="filterPanel">
+          <div class="filter-section">
+            <h4>Fish Type</h4>
+            <label><input type="checkbox" value="guppies" /> Guppies</label>
+            <label><input type="checkbox" value="angelfish" /> Angelfish</label>
+            <label><input type="checkbox" value="tetras" /> Tetras</label>
+            <label><input type="checkbox" value="cichlids" /> Cichlids</label>
+            <label><input type="checkbox" value="bettas" /> Bettas</label>
+          </div>
+          <div class="filter-section">
+            <h4>Other</h4>
+            <label><input type="checkbox" value="shrimp" /> Shrimp</label>
+            <label><input type="checkbox" value="plants" /> Plants</label>
+            <label><input type="checkbox" value="snails" /> Snails</label>
+            <label><input type="checkbox" value="supplies" /> Supplies</label>
+          </div>
+          <div class="filter-section">
+            <h4>Distance</h4>
+            <select id="distanceFilter">
+              <option value="all">All distances</option>
+              <option value="5">Within 5 miles</option>
+              <option value="10">Within 10 miles</option>
+              <option value="25">Within 25 miles</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Map Page -->
+        <div id="mapPage" class="page active">
+          <div class="map-layout">
+            <!-- Map Container -->
+            <div class="map-container">
+              <div id="map" class="map">
+                <!-- Custom Map Implementation -->
+                <div class="map-placeholder">
+                  <div class="map-pins">
+                    <!-- Store Pins -->
+                    <div
+                      class="map-pin"
+                      data-store="terrys"
+                      style="top: 30%; left: 40%"
+                    >
+                      <div class="pin-icon">
+                        <i class="fas fa-fish"></i>
+                      </div>
+                      <div class="pin-popup">
+                        <h4>Terry's Aquatics</h4>
+                        <p>Updated 2h ago</p>
+                        <img
+                          src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=100&h=60&fit=crop"
+                          alt="Tank"
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      class="map-pin"
+                      data-store="aquaworld"
+                      style="top: 60%; left: 30%"
+                    >
+                      <div class="pin-icon">
+                        <i class="fas fa-fish"></i>
+                      </div>
+                      <div class="pin-popup">
+                        <h4>AquaWorld</h4>
+                        <p>Updated 4h ago</p>
+                        <img
+                          src="https://images.unsplash.com/photo-1520637836862-4d197d17c35a?w=100&h=60&fit=crop"
+                          alt="Tank"
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      class="map-pin"
+                      data-store="fishparadise"
+                      style="top: 45%; left: 65%"
+                    >
+                      <div class="pin-icon">
+                        <i class="fas fa-fish"></i>
+                      </div>
+                      <div class="pin-popup">
+                        <h4>Fish Paradise</h4>
+                        <p>Updated 1h ago</p>
+                        <img
+                          src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=100&h=60&fit=crop"
+                          alt="Tank"
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      class="map-pin"
+                      data-store="reefstation"
+                      style="top: 25%; left: 70%"
+                    >
+                      <div class="pin-icon">
+                        <i class="fas fa-fish"></i>
+                      </div>
+                      <div class="pin-popup">
+                        <h4>Reef Station</h4>
+                        <p>Updated 30min ago</p>
+                        <img
+                          src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=100&h=60&fit=crop"
+                          alt="Tank"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Store List Sidebar -->
+            <div class="store-list">
+              <h3>Nearby Stores</h3>
+              <div class="store-cards">
+                <div class="store-card" data-store="terrys">
+                  <div class="store-info">
+                    <h4>Terry's Aquatics</h4>
+                    <p class="distance">2.3 miles away</p>
+                    <p class="last-updated">Updated 2 hours ago</p>
+                    <div class="store-tags">
+                      <span class="tag">Freshwater</span>
+                      <span class="tag">Saltwater</span>
+                      <span class="tag">Plants</span>
+                    </div>
+                  </div>
+                  <div class="store-image">
+                    <img
+                      src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=80&h=80&fit=crop"
+                      alt="Store"
+                    />
+                  </div>
+                </div>
+
+                <div class="store-card" data-store="aquaworld">
+                  <div class="store-info">
+                    <h4>AquaWorld</h4>
+                    <p class="distance">3.7 miles away</p>
+                    <p class="last-updated">Updated 4 hours ago</p>
+                    <div class="store-tags">
+                      <span class="tag">Tropical Fish</span>
+                      <span class="tag">Shrimp</span>
+                    </div>
+                  </div>
+                  <div class="store-image">
+                    <img
+                      src="https://images.unsplash.com/photo-1520637836862-4d197d17c35a?w=80&h=80&fit=crop"
+                      alt="Store"
+                    />
+                  </div>
+                </div>
+
+                <div class="store-card" data-store="fishparadise">
+                  <div class="store-info">
+                    <h4>Fish Paradise</h4>
+                    <p class="distance">4.1 miles away</p>
+                    <p class="last-updated">Updated 1 hour ago</p>
+                    <div class="store-tags">
+                      <span class="tag">Cichlids</span>
+                      <span class="tag">Bettas</span>
+                      <span class="tag">Supplies</span>
+                    </div>
+                  </div>
+                  <div class="store-image">
+                    <img
+                      src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=80&h=80&fit=crop"
+                      alt="Store"
+                    />
+                  </div>
+                </div>
+
+                <div class="store-card" data-store="reefstation">
+                  <div class="store-info">
+                    <h4>Reef Station</h4>
+                    <p class="distance">5.2 miles away</p>
+                    <p class="last-updated">Updated 30 minutes ago</p>
+                    <div class="store-tags">
+                      <span class="tag">Marine</span>
+                      <span class="tag">Corals</span>
+                      <span class="tag">Invertebrates</span>
+                    </div>
+                  </div>
+                  <div class="store-image">
+                    <img
+                      src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=80&h=80&fit=crop"
+                      alt="Store"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Store Detail Page -->
+        <div id="storeDetailPage" class="page">
+          <div class="store-detail">
+            <div class="store-header">
+              <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-left"></i> Back to Map
+              </button>
+              <div class="store-header-info">
+                <h1 id="storeTitle">Terry's Aquatics</h1>
+                <div class="store-meta">
+                  <p>
+                    <i class="fas fa-map-marker-alt"></i> 123 Aquarium St,
+                    Hobart, IN 46342
+                  </p>
+                  <p><i class="fas fa-phone"></i> (219) 555-0123</p>
+                  <p>
+                    <i class="fas fa-clock"></i> Open today: 10:00 AM - 8:00 PM
+                  </p>
+                </div>
+                <div class="store-actions">
+                  <button class="btn btn-primary">
+                    <i class="fas fa-phone"></i> Call Store
+                  </button>
+                  <button class="btn btn-outline">
+                    <i class="fas fa-directions"></i> Get Directions
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="tank-filters">
+              <button class="filter-tag active" data-filter="all">
+                All Tanks
+              </button>
+              <button class="filter-tag" data-filter="guppies">Guppies</button>
+              <button class="filter-tag" data-filter="shrimp">Shrimp</button>
+              <button class="filter-tag" data-filter="cichlids">
+                Cichlids
+              </button>
+              <button class="filter-tag" data-filter="plants">Plants</button>
+              <button class="filter-tag" data-filter="supplies">
+                Supplies
+              </button>
+            </div>
+
+            <div class="tank-grid" id="tankGrid">
+              <!-- Tank cards will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store Owner Portal - FishMap</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="owner-portal.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="ownerApp">
+      <!-- Header -->
+      <header class="owner-header">
+        <div class="header-content">
+          <div class="logo">
+            <i class="fas fa-fish"></i>
+            <span>FishMap</span>
+            <span class="portal-badge">Store Portal</span>
+          </div>
+          <nav class="owner-nav">
+            <a href="#" class="nav-link active" data-section="dashboard"
+              >Dashboard</a
+            >
+            <a href="#" class="nav-link" data-section="tanks">My Tanks</a>
+            <a href="#" class="nav-link" data-section="upload">Upload</a>
+            <a href="#" class="nav-link" data-section="settings">Settings</a>
+          </nav>
+          <div class="header-actions">
+            <button class="btn btn-outline">View My Store</button>
+            <button class="btn btn-primary">Logout</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Section -->
+      <div id="dashboard" class="owner-section active">
+        <div class="dashboard-container">
+          <div class="dashboard-header">
+            <h1>Terry's Aquatics Dashboard</h1>
+            <p>Manage your store's live inventory and connect with customers</p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-eye"></i>
+              </div>
+              <div class="stat-info">
+                <h3>2,847</h3>
+                <p>Store Views Today</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-fish"></i>
+              </div>
+              <div class="stat-info">
+                <h3>23</h3>
+                <p>Active Tank Listings</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-info">
+                <h3>2 hours</h3>
+                <p>Last Update</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-search"></i>
+              </div>
+              <div class="stat-info">
+                <h3>156</h3>
+                <p>Species Searches</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-content">
+            <div class="recent-activity">
+              <h2>Recent Activity</h2>
+              <div class="activity-list">
+                <div class="activity-item">
+                  <div class="activity-icon">
+                    <i class="fas fa-camera"></i>
+                  </div>
+                  <div class="activity-content">
+                    <h4>Tank photo uploaded</h4>
+                    <p>Community Tank #1 - Red Cherry Shrimp</p>
+                    <span class="activity-time">2 hours ago</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-icon">
+                    <i class="fas fa-search"></i>
+                  </div>
+                  <div class="activity-content">
+                    <h4>Customer searched for "ghost shrimp"</h4>
+                    <p>Your store appeared in results</p>
+                    <span class="activity-time">3 hours ago</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-icon">
+                    <i class="fas fa-edit"></i>
+                  </div>
+                  <div class="activity-content">
+                    <h4>Tank inventory updated</h4>
+                    <p>Guppy Breeding Tank - Added new arrivals</p>
+                    <span class="activity-time">5 hours ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="quick-actions">
+              <h2>Quick Actions</h2>
+              <div class="action-grid">
+                <button class="action-card" data-action="upload">
+                  <i class="fas fa-camera"></i>
+                  <span>Upload Tank Photo</span>
+                </button>
+                <button class="action-card" data-action="qr">
+                  <i class="fas fa-qrcode"></i>
+                  <span>Generate QR Code</span>
+                </button>
+                <button class="action-card" data-action="update">
+                  <i class="fas fa-edit"></i>
+                  <span>Update Inventory</span>
+                </button>
+                <button class="action-card" data-action="hours">
+                  <i class="fas fa-clock"></i>
+                  <span>Update Hours</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Tanks Section -->
+      <div id="tanks" class="owner-section">
+        <div class="tanks-container">
+          <div class="tanks-header">
+            <h1>My Tank Inventory</h1>
+            <button class="btn btn-primary" id="addTankBtn">
+              <i class="fas fa-plus"></i> Add New Tank
+            </button>
+          </div>
+
+          <div class="tanks-grid" id="ownerTanksGrid">
+            <!-- Tank management cards will be populated here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Section -->
+      <div id="upload" class="owner-section">
+        <div class="upload-container">
+          <div class="upload-header">
+            <h1>Upload Tank Photos</h1>
+            <p>
+              Keep your customers informed with fresh photos of your live
+              inventory
+            </p>
+          </div>
+
+          <div class="upload-methods">
+            <div class="upload-method">
+              <h2>QR Code Upload</h2>
+              <p>Print QR codes for each tank and scan with your phone</p>
+              <div class="qr-section">
+                <div class="qr-code">
+                  <img
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='white'/%3E%3Cg fill='black'%3E%3Crect x='0' y='0' width='20' height='20'/%3E%3Crect x='20' y='0' width='20' height='20'/%3E%3Crect x='40' y='0' width='20' height='20'/%3E%3Crect x='60' y='0' width='20' height='20'/%3E%3Crect x='80' y='0' width='20' height='20'/%3E%3Crect x='100' y='0' width='20' height='20'/%3E%3Crect x='120' y='0' width='20' height='20'/%3E%3Crect x='0' y='20' width='20' height='20'/%3E%3Crect x='120' y='20' width='20' height='20'/%3E%3Crect x='0' y='40' width='20' height='20'/%3E%3Crect x='40' y='40' width='20' height='20'/%3E%3Crect x='80' y='40' width='20' height='20'/%3E%3Crect x='120' y='40' width='20' height='20'/%3E%3Crect x='0' y='60' width='20' height='20'/%3E%3Crect x='40' y='60' width='20' height='20'/%3E%3Crect x='80' y='60' width='20' height='20'/%3E%3Crect x='120' y='60' width='20' height='20'/%3E%3Crect x='0' y='80' width='20' height='20'/%3E%3Crect x='40' y='80' width='20' height='20'/%3E%3Crect x='80' y='80' width='20' height='20'/%3E%3Crect x='120' y='80' width='20' height='20'/%3E%3Crect x='0' y='100' width='20' height='20'/%3E%3Crect x='120' y='100' width='20' height='20'/%3E%3Crect x='0' y='120' width='20' height='20'/%3E%3Crect x='20' y='120' width='20' height='20'/%3E%3Crect x='40' y='120' width='20' height='20'/%3E%3Crect x='60' y='120' width='20' height='20'/%3E%3Crect x='80' y='120' width='20' height='20'/%3E%3Crect x='100' y='120' width='20' height='20'/%3E%3Crect x='120' y='120' width='20' height='20'/%3E%3C/g%3E%3C/svg%3E"
+                    alt="QR Code"
+                  />
+                </div>
+                <div class="qr-info">
+                  <h3>Tank #1 - Community Tank</h3>
+                  <p>
+                    Scan this code with your phone camera to upload photos
+                    directly to this tank
+                  </p>
+                  <button class="btn btn-outline">Print QR Code</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="upload-method">
+              <h2>Direct Upload</h2>
+              <div class="upload-form">
+                <div class="form-group">
+                  <label for="tankSelect">Select Tank</label>
+                  <select id="tankSelect">
+                    <option value="">Choose a tank...</option>
+                    <option value="tank1">Community Tank #1</option>
+                    <option value="tank2">Guppy Breeding Tank</option>
+                    <option value="tank3">Angelfish Display</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="photoUpload">Upload Photo</label>
+                  <div class="upload-dropzone" id="uploadDropzone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop your photo here or click to browse</p>
+                    <input
+                      type="file"
+                      id="photoUpload"
+                      accept="image/*"
+                      multiple
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="speciesInput">Species in Tank</label>
+                  <input
+                    type="text"
+                    id="speciesInput"
+                    placeholder="e.g., Red Cherry Shrimp, Neon Tetras, Java Moss"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="notesInput">Notes (Optional)</label>
+                  <textarea
+                    id="notesInput"
+                    placeholder="Any additional information about this tank..."
+                  ></textarea>
+                </div>
+
+                <button class="btn btn-primary btn-large">
+                  <i class="fas fa-upload"></i> Upload Photos
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Section -->
+      <div id="settings" class="owner-section">
+        <div class="settings-container">
+          <div class="settings-header">
+            <h1>Store Settings</h1>
+          </div>
+
+          <div class="settings-content">
+            <div class="settings-section">
+              <h2>Store Information</h2>
+              <form class="settings-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="storeName">Store Name</label>
+                    <input
+                      type="text"
+                      id="storeName"
+                      value="Terry's Aquatics"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="storePhone">Phone</label>
+                    <input type="tel" id="storePhone" value="(219) 555-0123" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="storeAddress">Address</label>
+                  <input
+                    type="text"
+                    id="storeAddress"
+                    value="123 Aquarium St, Hobart, IN 46342"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="storeHours">Business Hours</label>
+                  <textarea id="storeHours">
+Monday - Friday: 10:00 AM - 8:00 PM
+Saturday: 9:00 AM - 9:00 PM
+Sunday: 11:00 AM - 6:00 PM</textarea
+                  >
+                </div>
+              </form>
+            </div>
+
+            <div class="settings-section">
+              <h2>Notification Preferences</h2>
+              <div class="checkbox-group">
+                <label>
+                  <input type="checkbox" checked />
+                  <span>Email notifications for customer searches</span>
+                </label>
+                <label>
+                  <input type="checkbox" checked />
+                  <span>Weekly inventory update reminders</span>
+                </label>
+                <label>
+                  <input type="checkbox" />
+                  <span>SMS alerts for high-demand species</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <h2>Privacy & Visibility</h2>
+              <div class="checkbox-group">
+                <label>
+                  <input type="checkbox" checked />
+                  <span>Show store on public map</span>
+                </label>
+                <label>
+                  <input type="checkbox" checked />
+                  <span>Allow customer reviews</span>
+                </label>
+                <label>
+                  <input type="checkbox" />
+                  <span>Display real-time pricing</span>
+                </label>
+              </div>
+            </div>
+
+            <button class="btn btn-primary">Save Settings</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="owner-portal.js"></script>
+  </body>
+</html>
